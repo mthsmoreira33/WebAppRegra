@@ -2,11 +2,11 @@
 
 Aplicação web criado para o desafio de Analista Desenvolvedor.
 
-Linguagem: C#
-Framework: Asp.Net Core 6
-Arquitetura: MVC
-Banco de Dados: SQL Server 2022
-ORM: Entity Framework Core 7.0
+- Linguagem: C#
+- Framework: Asp.Net Core 6
+- Arquitetura: MVC
+- Banco de Dados: SQL Server 2022
+- ORM: Entity Framework Core 7.0
 
 ## Passo a Passo: Buildar na Máquina Local
 
