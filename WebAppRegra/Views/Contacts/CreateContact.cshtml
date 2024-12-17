@@ -1,0 +1,38 @@
+﻿@model ContactViewModel
+
+<form class="form-group" asp-controller="Contacts" asp-action="CreateContact" method="post">
+    <div class="row pb-5 justify-content-between">
+        <div class="col-6">
+            <label for="Name">Nome</label>
+            <input type="text" asp-for="Name" placeholder="Insira o nome do contato" />
+        </div>
+    </div>
+    <div class="row pb-5 justify-content-between">
+        <div class="col-4">
+            <label for="PhoneNumber">Number</label>
+            <input id="PhoneNumber" type="tel" placeholder="Enter phone number" asp-for="PhoneNumber" />
+        </div>
+        <div class="col-4">
+            <input id="fixoRadio" type="radio" value="Fixo" checked asp-for="PhoneNumberType" />
+            <label for="fixoRadio">Fixo</label>
+            <input id="residencialRadio" type="radio" value="Residencial" asp-for="PhoneNumberType" />
+            <label for="residencialRadio">Residencial</label>
+            <input id="comercialRadio" type="radio" value="Comercial" asp-for="PhoneNumberType" />
+            <label for="comercialRadio">Comercial</label>
+            <input id="whatsappRadio" type="radio" value="Whatsapp" asp-for="PhoneNumberType" />
+            <label for="whatsappRadio">Whatsapp</label>
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Número</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+</table>

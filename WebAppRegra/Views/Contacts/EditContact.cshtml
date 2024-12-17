@@ -1,0 +1,61 @@
+﻿@model ContactViewModel
+
+<form class="form-group" id="formName" method="post" asp-action="EditContactName" asp-controller="Contacts">
+    <input type="hidden" asp-for="ContactId"/>
+    <div class="row pb-5 justify-content-between">
+        <div class="col-6">
+            <label class="form-label" for="name">Nome</label>
+            <input class="form-text" type="text" id="nameInput" asp-for="Name" />
+        </div>
+        <div class="col-6">
+            <button class="btn btn-primary" type="submit">Editar Nome</button>
+        </div>
+    </div>
+</form>
+<form class="form-group" id="formPhone" method="post" asp-action="AddPhoneNumber" asp-controller="Contacts">
+    <input type="hidden" asp-for="ContactId" />
+    <div class="row pb-5 justify-content-between">
+        <div class="col-4">
+            <label for="PhoneNumber">Number</label>
+            <input id="PhoneNumber" type="tel" asp-for="PhoneNumber" />
+        </div>
+        <div class="col-4">
+            <input id="fixoRadio" type="radio" value="Fixo" checked asp-for="PhoneNumberType" />
+            <label for="fixoRadio">Fixo</label>
+            <input id="residencialRadio" type="radio" value="Residencial" asp-for="PhoneNumberType" />
+            <label for="residencialRadio">Residencial</label>
+            <input id="comercialRadio" type="radio" value="Comercial" asp-for="PhoneNumberType" />
+            <label for="comercialRadio">Comercial</label>
+            <input id="whatsappRadio" type="radio" value="Whatsapp" asp-for="PhoneNumberType" />
+            <label for="whatsappRadio">Whatsapp</label>
+        </div>
+        <div class="col-4">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+    </div>
+</form>
+<table class="table table-striped text-center">
+    <thead>
+        <tr>
+            <th scope="col">Número</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var phoneNumber in Model.PhoneNumbers)
+        {
+            <tr>
+                <td>@phoneNumber.Number</td>
+                <td>@phoneNumber.Type</td>
+                <td>
+                    <a class="btn btn-danger" role="button" asp-controller="Contacts" asp-action="DeletePhoneNumber" asp-route-id="@phoneNumber.Id">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0" />
+                        </svg>
+                    </a>
+                </td>
+            </tr>
+        };
+    </tbody>
+</table>
