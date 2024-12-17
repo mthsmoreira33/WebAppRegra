@@ -26,11 +26,7 @@ namespace WebAppRegra.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
         }
 
@@ -83,11 +79,7 @@ namespace WebAppRegra.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
         }
 
@@ -125,11 +117,7 @@ namespace WebAppRegra.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
         }
 
@@ -160,12 +148,7 @@ namespace WebAppRegra.Controllers
             }
             catch (Exception ex)
             {
-
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
         }
 
@@ -207,9 +190,7 @@ namespace WebAppRegra.Controllers
             }
             catch (Exception ex)
             {
-                return View("Error", new ErrorViewModel {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, 
-                    Message = ex.Message });
+                return Error(ex);
             }
         }
 
@@ -234,11 +215,7 @@ namespace WebAppRegra.Controllers
 
             } catch (Exception ex)
             {
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
             
         }
@@ -268,11 +245,7 @@ namespace WebAppRegra.Controllers
             catch (Exception ex)
             {
 
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
         }
 
@@ -296,11 +269,7 @@ namespace WebAppRegra.Controllers
                 return View(phoneNumber);
             } catch(Exception ex)
             {
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
             
         }
@@ -323,19 +292,18 @@ namespace WebAppRegra.Controllers
                 return RedirectToAction("EditContact", new { id = phoneNumberInDb.ContactId });
             } catch(Exception ex)
             {
-                return View("Error", new ErrorViewModel
-                {
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                    Message = ex.Message
-                });
+                return Error(ex);
             }
         }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(Exception ex)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,  
+                Message = ex.Message
+            });
         }
     }
 }
