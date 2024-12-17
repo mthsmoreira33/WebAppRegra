@@ -38,6 +38,7 @@ namespace WebAppRegra.Controllers
             return View();
         }
 
+        // Cria contato, obrigatoriamente tendo um nome e número de telefone
         [HttpPost]
         public IActionResult CreateContact(ContactViewModel contactDTO)
         {
@@ -89,6 +90,7 @@ namespace WebAppRegra.Controllers
         }
 
 
+        // Redireciona para view de editar contato
         [HttpGet]
         public IActionResult EditContact(int? id)
         {
@@ -129,7 +131,7 @@ namespace WebAppRegra.Controllers
             }
         }
 
-
+        // Edita somente nome do contato
         [HttpPost]
         public IActionResult EditContactName(ContactViewModel contactDTO)
         {
@@ -165,7 +167,7 @@ namespace WebAppRegra.Controllers
             }
         }
 
-
+        // Adiciona número de telefone ao usuário já criado
         [HttpPost]
         public IActionResult AddPhoneNumber(ContactViewModel phoneNumberDTO)
         {
