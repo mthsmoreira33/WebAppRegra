@@ -14,10 +14,12 @@ namespace WebAppRegra.Controllers
             _context = context;
         }
 
+
         public IActionResult Index()
         {
             try
             {
+                // Resgata contatos do banco de dados
                 var contacts = _context.Contacts.ToList();
 
                 return View(contacts);
